@@ -1,2 +1,2 @@
-# cs61b_sp16
-Only for personal study
+# cs61b_sp18
+Only use for personal study
