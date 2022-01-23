@@ -1,15 +1,15 @@
-public class LinkedListDeque<Item> {
+public class LinkedListDeque<T> {
     private class Node {
-        public Node prev;
-        public Item item;
-        public Node next;
+        private Node prev;
+        private T item;
+        private Node next;
 
-        public Node(Node prev, Item item, Node next) {
+        private Node(Node prev, T item, Node next) {
             this.prev = prev;
             this.item = item;
             this.next = next;
         }
-     }
+    }
 
     // The first item (if it exists) is at sentinel.next.item
     private final Node sentinel;
@@ -23,16 +23,16 @@ public class LinkedListDeque<Item> {
         size = 0;
     }
 
-    // Adds an item of type Item to the front of the deque
-    public void addFirst(Item item) {
+    // Adds an item of type T to the front of the deque
+    public void addFirst(T item) {
         Node first = new Node(sentinel, item, sentinel.next);
         sentinel.next.prev = first;
         sentinel.next = first;
         size += 1;
     }
 
-    // Adds an item of type Item to the back of the deque
-    public void addLast(Item item) {
+    // Adds an item of type T to the back of the deque
+    public void addLast(T item) {
         Node last = new Node(sentinel.prev, item, sentinel);
         sentinel.prev.next = last;
         sentinel.prev = last;
@@ -61,7 +61,7 @@ public class LinkedListDeque<Item> {
     }
 
     // Removes and returns the item at the front of the deque. If no such item exists, return null
-    public Item removeFirst() {
+    public T removeFirst() {
         if (size == 0) {
             return null;
         }
@@ -73,7 +73,7 @@ public class LinkedListDeque<Item> {
     }
 
     // Removes and returns the item at the back of the deque. If no such item exists, return null
-    public Item removeLast() {
+    public T removeLast() {
         if (size == 0) {
             return null;
         }
@@ -85,12 +85,12 @@ public class LinkedListDeque<Item> {
     }
 
     // Gets the item at the given index
-    public Item get(int index) {
+    public T get(int index) {
         if (index > size - 1) {
             return null;
         }
         Node ptr = sentinel.next;
-        while(index > 0) {
+        while (index > 0) {
             ptr = ptr.next;
             index -= 1;
         }
@@ -98,7 +98,7 @@ public class LinkedListDeque<Item> {
     }
 
     // Recursive get method
-    public Item getRecursive(int index) {
+    public T getRecursive(int index) {
         if (index > size - 1) {
             return null;
         }
@@ -106,7 +106,7 @@ public class LinkedListDeque<Item> {
     }
 
     // Recursive get method helper
-    private Item getRecursive(Node ptr, int index) {
+    private T getRecursive(Node ptr, int index) {
         if (index == 0) {
             return ptr.item;
         }
