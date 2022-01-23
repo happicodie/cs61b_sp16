@@ -118,10 +118,10 @@ public class ArrayDeque<T> {
         if (index > size - 1) {
             return null;
         }
-        if (nextLast - 1 > nextFirst + 1 || nextLast == 0) {
-            return items[nextFirst + 1 + index];
-        } else if (nextFirst == 7) {
+        if (nextFirst == items.length - 1) {
             return items[index];
+        } else if (nextLast - 1 > nextFirst + 1 || nextLast == 0) {
+            return items[nextFirst + 1 + index];
         } else {
             if (nextFirst + 1 + index < items.length) {
                 return items[nextFirst + 1 + index];
