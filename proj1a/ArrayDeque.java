@@ -21,12 +21,12 @@ public class ArrayDeque<T> {
         int newNextLast = a.length / 2;
         int i = 0;
         while (i < size) {
-            a[newNextFirst] = get(i);
-            newNextFirst += 1;
+            a[newNextLast] = get(i);
+            newNextLast += 1;
             i += 1;
         }
         nextFirst = newNextFirst;
-        nextLast = newNextLast;
+        nextLast = 0;
         items = a;
     }
 
