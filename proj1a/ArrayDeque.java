@@ -22,11 +22,15 @@ public class ArrayDeque<T> {
         int i = 0;
         while (i < size) {
             a[newNextLast] = get(i);
-            newNextLast += 1;
+            if (newNextLast == a.length - 1) {
+                newNextLast = 0;
+            } else {
+                newNextLast += 1;
+            }
             i += 1;
         }
         nextFirst = newNextFirst;
-        nextLast = 0;
+        nextLast = newNextLast;
         items = a;
     }
 
